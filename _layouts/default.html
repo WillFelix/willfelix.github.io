@@ -3,17 +3,25 @@
 
   {% include head.html %}
 
-  <body>
+  <body class="loading">
 
-    {% include header.html %}
+    <div id="wrapper">
+      <div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
 
-    <div class="page-content">
-      <div class="wrapper">
+        {% include header.html %}
         {{ content }}
+        {% include footer.html %}
+
       </div>
     </div>
 
-    {% include footer.html %}
+    <script>
+			window.onload = function() { document.body.className = ''; }
+			window.ontouchmove = function() { return false; }
+			window.onorientationchange = function() { document.body.scrollTop = 0; }
+		</script>
 
   </body>
 
